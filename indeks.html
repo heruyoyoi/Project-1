@@ -1,63 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Music Player with Lyrics</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player with Lyrics</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Music Player</h1>
-    
-    <!-- Tab Menu -->
-    <div class="tabs">
-      <button class="tab-btn active" data-tab="local">Local Music</button>
-      <button class="tab-btn" data-tab="youtube">YouTube</button>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>Music Player</h1>
+        </header>
+        
+        <nav class="tabs-nav">
+            <button class="tab-btn active" data-tab="local">Local Music</button>
+            <button class="tab-btn" data-tab="youtube">YouTube</button>
+        </nav>
+        
+        <main class="tab-content-container">
+            <section id="local" class="tab-content active">
+                <input type="file" id="file-input" accept="audio/*" multiple>
+                <ul id="local-playlist" class="playlist"></ul>
+            </section>
+            
+            <section id="youtube" class="tab-content">
+                <div class="search-form">
+                    <input type="text" id="Youtube" placeholder="Search or paste URL...">
+                    <button id="search-btn" class="btn">Search</button>
+                </div>
+                <ul id="youtube-results" class="playlist"></ul>
+            </section>
+        </main>
+        
+        <div class="player-controls">
+            <div class="track-info">
+                <h2 id="current-track" class="track-title">No track selected</h2>
+                <p id="current-artist" class="track-artist">-</p>
+            </div>
+            
+            <div class="player-buttons">
+                <button id="prev-btn" class="btn-icon">⏮</button>
+                <button id="play-btn" class="btn-icon">⏵</button>
+                <button id="next-btn" class="btn-icon">⏭</button>
+            </div>
+            
+            <div class="progress-bar-container">
+                <input type="range" id="progress-bar" value="0">
+                <div class="time-info">
+                    <span id="current-time">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="lyrics-section">
+            <h3>Lyrics</h3>
+            <div id="lyrics" class="lyrics-text">No lyrics available.</div>
+        </div>
+        
+        <div id="youtube-player" class="youtube-player-hidden"></div>
     </div>
     
-    <!-- Local Music Tab -->
-    <div id="local" class="tab-content active">
-      <input type="file" id="file-input" accept="audio/*" multiple />
-      <ul id="local-playlist" class="playlist"></ul>
-    </div>
-    
-    <!-- YouTube Tab -->
-    <div id="youtube" class="tab-content">
-      <input type="text" id="youtube-search" placeholder="Search or paste URL..." />
-      <button id="search-btn">Search</button>
-      <ul id="youtube-results" class="playlist"></ul>
-    </div>
-    
-    <!-- Player Controls -->
-    <div class="player">
-      <div class="now-playing">
-        <h2 id="current-track">No track selected</h2>
-        <p id="current-artist">-</p>
-      </div>
-      <div class="controls">
-        <button id="prev-btn">⏮</button>
-        <button id="play-btn">⏵</button>
-        <button id="next-btn">⏭</button>
-      </div>
-      <input type="range" id="progress-bar" value="0" />
-      <div class="time">
-        <span id="current-time">0:00</span>
-        <span id="duration">0:00</span>
-      </div>
-    </div>
-    
-    <!-- Lyrics Section -->
-    <div class="lyrics-container">
-      <h3>Lyrics</h3>
-      <div id="lyrics">No lyrics available.</div>
-    </div>
-    
-    <!-- YouTube Player (Hidden) -->
-    <div id="youtube-player"></div>
-  </div>
-
-  <script src="https://www.youtube.com/iframe_api"></script>
-  <script src="script.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="script.js"></script>
 </body>
 </html>
